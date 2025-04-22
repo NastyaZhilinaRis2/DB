@@ -1,0 +1,26 @@
+DELIMITER //
+CREATE PROCEDURE `GetAllDeleted`() 
+BEGIN 
+SELECT * FROM LOG WHERE Action LIKE 'Удален%'; 
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE `GetAllInserted`() 
+BEGIN 
+SELECT * FROM LOG WHERE Action LIKE 'Добавлен%'; 
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE `GetAllUpdated`() 
+BEGIN 
+SELECT * FROM LOG WHERE Action LIKE 'Изменен%'; 
+END //
+DELIMITER ;
+
+DELIMITER // 
+CREATE PROCEDURE `GetAllProccessAtTime`(IN `timer` INT) 
+BEGIN SELECT * FROM LOG WHERE TimeAction LIKE CONCAT('%', timer, '%'); 
+END //
+DELIMITER ;

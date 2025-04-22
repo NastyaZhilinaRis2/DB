@@ -1,0 +1,17 @@
+1. CREATE TRIGGER `Delete_students` AFTER DELETE ON `table_students_zhilina` FOR EACH ROW INSERT INTO `LOG`(`Id_students`, `Action`) VALUES (OLD.Id_students, CONCAT('Удален студент: ', OLD.Surname, ' ', OLD.Name, ' ', OLD.Patronymic, ' Группа: ', OLD.Group))
+2. CREATE TRIGGER `Update_students` AFTER UPDATE ON `table_students_zhilina` FOR EACH ROW INSERT INTO `LOG`(`Id_students`, `Action`) VALUES (NEW.Id_students, CONCAT('Изменен студент: ', NEW.Surname, ' ', NEW.Name, ' ', NEW.Patronymic, ' Группа: ', NEW.Group))
+3. CREATE TRIGGER `Insert_students` AFTER INSERT ON `table_students_zhilina` FOR EACH ROW INSERT INTO `LOG`(`Id_students`, `Action`) VALUES (NEW.Id_students, CONCAT('Добавлен студент: ', NEW.Surname, ' ', NEW.Name, ' ', NEW.Patronymic, ' Группа: ', NEW.Group))
+
+
+INSERT INTO `table_students_zhilina` (`Name`, `Surname`, `Patronymic`, `Group`) VALUES 
+('Иванов', 'Иван', 'Иванович', 'РИС-23-2б'),
+('Петров', 'Петр', 'Петрович', 'РИС-23-2б'),
+('Петров', 'Петр', 'Петрович', 'РИС-23-2б'), 
+('Сидоров', 'Иван', 'Иванович', 'РИС-23-1а'),
+('Кузнецов', 'Алексей', 'Сергеевич', 'РИС-23-2б'),
+('Иванов', 'Дмитрий', 'Александрович', 'РИС-23-1в'),
+('Поляков', 'Андрей', 'Викторович', 'РИС-23-2а'),
+('Семенова', 'Мария', 'Петровна', 'РИС-23-1a'),
+('Николаев', 'Станислав', 'Павлович', 'РИС-23-2a'),
+('Федоров', 'Евгений', 'Антонович', 'РИС-23-1б'),
+('Морозов', 'Виктор', 'Иванович', 'РИС-23-2б')

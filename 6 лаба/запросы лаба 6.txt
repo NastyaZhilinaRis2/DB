@@ -1,0 +1,14 @@
+CREATE VIEW VIEW1
+AS
+SELECT table_employees_zhilina. Surname, table_employees_zhilina.Name, table_employees_zhilina.Patronymic, table_post_zhilina.Salary
+FROM table_employees_zhilina, table_post_zhilina WHERE table_employees_zhilina.id_post = table_post_zhilina.Id_post;
+CREATE VIEW VIEW2
+AS
+SELECT `Name`, `Surname`, `Patronymic`, `Address`
+FROM `table_employees_zhilina`
+ORDER BY `Address` ASC;
+CREATE VIEW VIEW3
+AS
+SELECT table_employees_zhilina.Name, table_employees_zhilina.Surname, table_employees_zhilina.Patronymic, table_post_zhilina.Clock
+FROM table_employees_zhilina, table_post_zhilina 
+WHERE table_post_zhilina.Clock > 4 AND table_post_zhilina.Id_post = `table_employees_zhilina`.`id_post`;

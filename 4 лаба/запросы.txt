@@ -1,0 +1,52 @@
+dml:
+select
+SELECT table_employees_zhilina.Name, table_employees_zhilina.Surname, table_employees_zhilina.Patronymic, table_employees_zhilina.Telephone, Salary 
+FROM table_employees_zhilina, table_post_zhilina 
+WHERE table_employees_zhilina.id_post = table_post_zhilina.id_post
+
+insert
+INSERT INTO `table_employees_zhilina`(`Name`, `Surname`, `Patronymic`, `Telephone`, `Address`, `id_post`) 
+VALUES ('Новый','Сотрудник','!','89000000000','Г.Пермь','1')
+
+update
+UPDATE `table_employees_zhilina` 
+SET `Name`='Измененный',`Surname`='Новый',`Patronymic`='Сотрудник',`Telephone`='88005552525',`Address`='ул. Академика Королева' 
+WHERE `Name`= "Новый"
+
+delete
+DELETE FROM `table_employees_zhilina` 
+WHERE `Name`= "Измененный"
+
+ddl:
+create
+CREATE TABLE `table_group_zhilina` (
+  `Id_group` int(11)
+  `Name` varchar(40),
+  `Id_employees` int(11) DEFAULT 0) 
+  DEFAULT CHARACTER SET utf8 COLLATE=utf8_general_ci
+
+alter
+ALTER TABLE table_group_zhilina 
+MODIFY COLUMN Id_group INT AUTO_INCREMENT PRIMARY KEY;;
+
+drop
+DROP TABLE table_group_zhilina
+
+INNER JOIN
+SELECT table_employees_zhilina.Name, table_employees_zhilina.Surname, table_employees_zhilina.Patronymic, table_post_zhilina.Name, table_post_zhilina.Salary
+FROM table_employees_zhilina
+INNER JOIN table_post_zhilina ON table_employees_zhilina.id_post = table_post_zhilina.Id_post AND table_post_zhilina.Salary >= 70000
+ORDER BY table_employees_zhilina.Surname;
+
+
+
+SELECT table_group_zhilina.Name, table_group_zhilina.Id_employees
+FROM table_group_zhilina, table_employees_zhilina 
+WHERE table_employees_zhilina.Id_employees = table_group_zhilina.Id_employees
+
+
+
+
+https://selectel.ru/blog/tutorials/how-to-create-tables-in-mysql/
+https://selectel.ru/blog/tutorials/how-to-create-mysql-primary-foreign-keys/
+https://metanit.com/sql/mysql/2.2.php

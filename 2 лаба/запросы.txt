@@ -1,0 +1,12 @@
+1 запрос:
+SELECT table_employees_zhilina.Name, table_employees_zhilina.Surname, table_employees_zhilina.Patronymic, table_employees_zhilina.Telephone, Salary 
+FROM table_employees_zhilina, table_post_zhilina 
+WHERE table_employees_zhilina.id_post = table_post_zhilina.id_post
+2 запрос:
+SELECT `Name`, `Surname`, `Patronymic`, `Address`
+FROM `table_employees_zhilina`
+ORDER BY `Address` ASC
+3 запрос:
+SELECT table_employees_zhilina.Name, table_employees_zhilina.Surname, table_employees_zhilina.Patronymic, table_post_zhilina.Clock
+FROM table_employees_zhilina, table_post_zhilina 
+WHERE table_post_zhilina.Clock > 4 AND table_post_zhilina.Id_post = `table_employees_zhilina`.`id_post`
